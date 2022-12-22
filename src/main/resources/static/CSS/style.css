@@ -1,0 +1,302 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+}
+
+.frame {
+  height: 90vh;
+  width: 90vw;
+  margin: 5vh 5vw;
+  background-color: #eee;
+  background-position: center;
+  background-size: cover;
+  
+  animation: image 5s infinite alternate;
+}
+
+@keyframes image {
+  0% {
+   background-image: url('https://th.bing.com/th/id/R.7a9efc25e1dea8854eeac4ec77904d6e?rik=GhT4S8bTVJsW0A&pid=ImgRaw&r=0');
+  }
+  50% {
+    background-image: url('https://th.bing.com/th/id/R.233c20a3fbb3eb74df974f6d45b28850?rik=OyuFFCIp8zd%2bcA&pid=ImgRaw&r=0');
+  }
+   100% {
+    background-image: url('https://www.100hdwallpapers.com/wallpapers/4096x2304/rolls_royce_phantom_ewb_chengdu_2018_4k-other.jpg');
+  }
+}
+h1 {
+	color:gray;
+	height: 100px;
+	width:900px;
+	font-family: "Brush Script MT", cursive;
+
+}
+
+.button{
+	border-radius: 15px 15px 15px 15px;
+	background-color: gray;	
+}
+.button2{
+	border-radius: 15px 15px 15px 15px;
+}
+
+.frame2{
+	background: url('https://wallpapersmug.com/large/29a76a/2020-bentley-mulsanne-front.jpg') no-repeat center fixed;
+	background-size: cover;
+	height:800px;
+}
+
+.frame3{
+	background: url('https://media.istockphoto.com/photos/autonomous-car-interior-concept-luxury-interior-serve-cool-drink-picture-id532029398?k=6&m=532029398&s=170667a&w=0&h=YZk56OVpmOtoW8dRIJQISHDXFwhfDy0iitf4_tBv15Y=') no-repeat;
+	height:100%;
+	margin-top:70px;
+	margin-bottom:50px;
+}
+
+.frame4{
+	background: url('https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0a/c9/1f/39.jpg') no-repeat;
+	height:345px;
+	margin-top:70px;
+	margin-bottom:50px;
+}
+
+.frame5{
+	background: url('https://www.lamborghinimontreal.com/wp-content/uploads/2017/03/URUSI-02.jpg') no-repeat center fixed;
+	background-size: cover;
+	height:800px;
+}
+
+.frame6{
+	background: url('https://st.automobilemag.com/uploads/sites/11/2015/03/Aston-Martin-Lagonda-Taraf-1.jpg') no-repeat center fixed;
+	background-size: cover;
+	height:800px;
+}
+
+.frame7{
+	background: url('https://1.bp.blogspot.com/-fcesTE8lfxc/XvMSteILwfI/AAAAAAAATcI/Yu31uaZapeUz7FJacUnjBuVg6Jg_JJKIQCK4BGAsYHg/s1280/Carshighlight.com%2B-%2BPininfarina%2BBattista%2BReview%2BFace.jpg') no-repeat center fixed;
+	background-size: cover;
+	height:100%;
+}
+
+.frame8{
+	background: url('https://wallpapercave.com/wp/zQ1Fn3X.jpg') no-repeat center fixed;
+	background-size: cover;
+	height:800px;
+}
+
+.frame9{
+	background: url('https://jooinn.com/images/black-vintage-car-1.jpg') no-repeat center fixed;
+	background-size: cover;
+	min-height:800px;
+	max-height:100%;
+}
+
+.frame10{
+	background: url('https://lh3.googleusercontent.com/proxy/lKVca6kvvMOYpsggwfMgxC6ehyyq92GzKKpYL_tw1x0ihtLnykt16TmN-wQ_OMrWznXaC6gTtpmhlamWKAcZphdLeyLdiajoy6ffXjQ70xEk=w1200-h630-p-k-no-nu') no-repeat center fixed;
+	background-size: cover;
+	min-height:800px;
+	max-height:100%;
+}
+
+.frame11{
+	background: url('https://www.communityhousingpartners.org/wp-content/uploads/2022/02/VaBizBPTW_2022_digitalBadge-300x279.png') no-repeat;
+	height:300px;
+	margin-top:70px;
+	margin-bottom:50px;
+	margin-left:100px;
+}
+
+.frame12{
+	background: url('https://static.vecteezy.com/system/resources/previews/000/694/632/non_2x/abstract-technology-particle-gray-background-vector.jpg') no-repeat;
+	height:300px;
+	margin-left:25px;
+
+}
+
+.frame13{
+	background: url('https://th.bing.com/th/id/R.d902b404a8ea24437eae0bb4330686f3?rik=FEOMZeDKlFkc8g&riu=http%3a%2f%2fwww.aryeb.com%2fimages%2flistings%2f2015-11%2fbugatti_veyron_2009_engine-1448428156-901-e.jpg&ehk=FwQ63tbuHJoYWLV302yT5zXsV0PiXfgUj4z7X7%2fgXFM%3d&risl=&pid=ImgRaw&r=0') no-repeat;
+	background-size: cover;
+	height:800px;
+	height:100%;
+
+}
+
+.dash{
+	height:40px;
+	width:250px;
+	margin-bottom:15px;
+	font-size: 1.5em;
+	background-color: rgb(122, 90, 9);
+}
+
+.para{
+	font-size: 20px;
+    line-height: 33px !important;
+    color: #fff;
+
+}
+.image-preview{
+	width: 500px;
+	min-height:400px;
+	border: 2px solid #dddddd;
+	margin-top:15px;
+	
+	/*Default text*/
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	font-weight: bold;
+	color: #cccccc;
+}
+
+.image-preview__image{
+	display:none;
+	width:100%;
+}
+
+.about{
+	text-align:center;
+	font-family: ravensara;
+	color:black;
+	border:solid 5px ivory;
+	height:500px;
+	margin-left:100px;
+	padding:70px;
+	font-size:3.75em;
+	font-weight:bold;
+	width:1300px;
+	background-color:rgb(209, 152, 7,0.65);
+}
+
+.developer{
+	height:150px;
+	width:195px;
+	margin:25px;
+	border-radius:45%;
+}
+
+.small {
+    letter-spacing: 0.5px !important;
+}
+
+.card {
+    box-shadow: 0px 5px 16px rgba(223, 241, 223, 0.5);
+    transition: 0.8s;
+    background: #333;;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 7px !important;
+
+}
+
+.card-header,
+.card-footer {
+    border-radius: 7px !important;
+}
+
+.card:after {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    z-index: 9999;
+    height: 100%;
+    pointer-events: none;
+}
+
+.card-title img{
+    z-index: 99999 !important;
+}
+.card .layer {
+    position: absolute;
+    top: calc(100% - 5px);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#03a9f4, #e91ee3);
+    left: 0;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.card:hover {
+    box-shadow: -5px 50px 100px rgba(223, 241, 223, 0.5);
+}
+
+
+.card:hover hr {
+    background-color: #fff;
+
+}
+
+.card:hover h4   {
+    font-weight: 600;
+}
+.card:hover p  {
+    font-weight: 600;
+}
+.card:hover small   {
+    font-weight: 600;
+}
+
+.card:hover .layer {
+    top: 0;
+}
+
+.card .content {
+    position: relative;
+    z-index: 2;
+}
+
+.card .content .img-1 {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white !important;
+
+}
+
+.card h4 {
+    color: #fff;
+    font-weight: 500;
+}
+
+hr {
+    background-color: rgb(117, 117, 117);
+    width: 80% !important;
+    transition: 1s;
+}
+
+
+.bold {
+    font-weight: 500;
+}
+
+#quotes{
+    opacity: 0.1;
+    filter: alpha(opacity=40);
+}
+
+
+@media (max-width: 479px) {
+    p {
+        padding: 0 !important;
+    }
+
+    .img-1{
+        margin-right: 0 !important;
+    }
+
+}
+
+
+
+
+
+
+
+
