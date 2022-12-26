@@ -147,14 +147,21 @@
 						class="button">Submit</button>
 				</form:form>
 			</div>
-			<div class="d-flex col-4" style="margin-left:65px; margin-top:30px;">
-				<div>
-					<input type="file" name="inpFile" id="inpFile" class="col-12" style="color:white; background-color:teal;">
-					<div class="image-preview" id="imagePreview">
-						<img src="" alt="Image Preview" class="image-preview__image">
-						<span class="image-preview__default-text">Image Preview</span>
+			<div class=" col-4" style="margin-left:65px; margin-top:30px;">
+				<form:form action="/vehicle/image/save" modelAttribute="newCar" method="post" enctype="multipart/form-data">
+					<div>
+						<form:input path="photos" type="file" name="inpFile" id="inpFile" class="col-12" style="color:white; background-color:teal;"/>
+						<div class="image-preview" id="imagePreview">
+							<img src="" alt="Image Preview" class="image-preview__image">
+							<span class="image-preview__default-text">Image Preview</span>
+						</div>
 					</div>
-				</div>
+				    <div style="color:white;">
+					    <div><form:label path="photos2">Photos: </form:label></div>
+					    <div><form:input path="photos2" type="file" id="fileImage2" class="col-12" style="color:white; background-color:teal;" name="image" accept="image/png, image/jpeg" /></div>
+				    	<img id="thumbnail" alt="Image 2 Preview"/>
+				    </div>
+				</form:form>
 			</div>
 		</div>
 	
@@ -185,6 +192,8 @@
 			
 		}
 	})
+	
+	
 </script>
 </body>
 <footer class="bg-dark text-center text-white" style="margin-top:20px;">

@@ -57,6 +57,7 @@
 					</div>
 				</nav>
 			</div>
+			<img src="/${user.photosImagePath}" />
 			<div style="margin-left:380px;">
 				<form:form action="/cars/${car.id}/reviews" method="post" modelAttribute="review">
 		            <h1 class="float-left" style="color:white; font-family: ravensara;">Add a review for this car:</h1>

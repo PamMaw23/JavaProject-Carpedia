@@ -103,11 +103,12 @@
 										<div class="form-element" style="padding-left: 15px; padding-right: 15px; margin-bottom:20px;">
 											<a href="#">Forgot password?</a>
 										</div>
+										<button class="button" type="button"
+								style="padding-left: 5px; padding-right: 5px;margin-left:100px; margin-right:100px;"
+								data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create account</button>
 							</div>-->
 							<!-- <button class="button" >Create an account</button> -->
-							<button class="button" type="button"
-								style="padding-left: 5px; padding-right: 5px;"
-								data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create account</button>
+							
 							<div class="modal fade" id="staticBackdrop" tabindex="-1"
 								aria-labelledby="exampleModalLabel + register"
 								aria-hidden="true">

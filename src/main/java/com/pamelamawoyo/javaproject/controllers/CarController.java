@@ -1,23 +1,37 @@
 package com.pamelamawoyo.javaproject.controllers;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.pamelamawoyo.javaproject.models.Car;
 import com.pamelamawoyo.javaproject.models.Review;
+import com.pamelamawoyo.javaproject.repositories.CarRepository;
 import com.pamelamawoyo.javaproject.services.CarService;
 import com.pamelamawoyo.javaproject.services.RepairService;
 import com.pamelamawoyo.javaproject.services.ReviewService;
 import com.pamelamawoyo.javaproject.services.UserService;
+import com.pamelamawoyo.javaproject.util.FileUploadUtil;
+
 
 @Controller
 public class CarController {
@@ -33,6 +47,9 @@ public class CarController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+    private CarRepository carRepo;
 	
 	@GetMapping("/financing")
  	public String financing(HttpSession session) {
@@ -146,6 +163,35 @@ public class CarController {
 				return "redirect:/cars/" + id + "/reviews";
 			}
 		}
+		
+		@PostMapping("/vehicle/image/save")
+	    public RedirectView saveUser(Car newCar,
+	            @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+	         
+	        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+	        newCar.setPhotos(fileName);
+	         
+	        Car savedCar = carRepo.save(newCar);
+	 
+	        String uploadDir = "./car-photos/" + savedCar.getId();
+	        
+	        Path uploadPath = Paths.get(uploadDir);
+	        
+	        if(!Files.exists(uploadPath)) {
+	        	Files.createDirectories(uploadPath);
+	        }
+	 
+	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+	        
+	        try (InputStream inputStream = multipartFile.getInputStream()){
+	        Path filePath = uploadPath.resolve(fileName);
+	        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+	        } catch(IOException e) {
+	        	throw new IOException("Could not save uploaded file:" + fileName);
+	        }
+	        return new RedirectView("/inventory", true);
+	        
+	    }
 		
 //		@GetMapping("/testimonials")
 //	 	public String testimonials( String type,HttpSession session, Model model) {

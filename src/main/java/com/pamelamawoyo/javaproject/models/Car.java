@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -89,12 +90,24 @@ public class Car {
     @NotNull(message="Year is required!")
     private String manufactureYear;
     
+    @Column(nullable = true, length = 64)
+    private String photos;
+    
+    @Column(nullable = true, length = 64)
+    private String photos2;
+    
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
     
     @Min(value=0, message="Provide price of vehicle")
     private Integer price;
+    
+    @Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+        return "/car-photos/" + id + "/" + photos;
+    }
     
     @Column(updatable=false)
     @OneToMany(mappedBy="car", fetch=FetchType.LAZY)
@@ -121,6 +134,18 @@ public class Car {
         this.updatedAt = new Date();
     }
 	
+	public String getPhotos2() {
+		return photos2;
+	}
+	public void setPhotos2(String photos2) {
+		this.photos2 = photos2;
+	}
+	public String getPhotos() {
+		return photos;
+	}
+	public void setPhotos(String photos) {
+		this.photos = photos;
+	}
 	public String getCarMake() {
 		return carMake;
 	}
