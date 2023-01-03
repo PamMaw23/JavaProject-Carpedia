@@ -68,6 +68,7 @@
 	       <div><a href="/inventory" ><button class="dash">Inventory</button></a></div>
 	       <div><a href="/service/locations" ><button class="dash">Service & Locations</button></a></div>
 	       <div><a href="/financing" ><button class="dash">Financing Options</button></a></div>
+	       <div><a href="/vehicle/new"><button class="dash">Add a New Vehicle</button></a></div>
 	    </div>
 	   </div>
 		<div class="d-flex" style="background-color: #9f7804; height:500px;">

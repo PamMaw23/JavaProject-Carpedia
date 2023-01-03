@@ -129,6 +129,7 @@
 					<div><h3>CLOSED</h3></div>
 					<div><h3>CLOSED</h3></div>
 				</div>
+				<a href="/scheduled/service"><button class="button" type="submit" style="margin-left:10px; margin-right:10px;">Scheduled Service</button></a>
 			</div>
 		</div>
 	</div>

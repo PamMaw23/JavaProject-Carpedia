@@ -19,6 +19,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -60,8 +61,14 @@ public class Repair {
     @Future
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date serviceDate;
-    
-    @PrePersist
+
+	@JsonProperty("assigned_staff")
+	private String assigned_staff;
+	@JsonProperty("milestone")
+	private String mileStone;
+
+
+	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
     }
@@ -155,5 +162,21 @@ public class Repair {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getAssigned_staff() {
+		return assigned_staff;
+	}
+
+	public void setAssigned_staff(String assignedStaff) {
+		this.assigned_staff = assignedStaff;
+	}
+
+	public String getMileStone() {
+		return mileStone;
+	}
+
+	public void setMileStone(String mileStone) {
+		this.mileStone = mileStone;
 	}
 }
