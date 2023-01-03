@@ -123,26 +123,6 @@
 						<form:input path="price" type="number" min="0" class="form-control"/>
 						<form:errors path="price" class="text-danger" />
 					</div>
-					<div class="form-group">
-						<form:label path="image1" style="background-color:teal;" class="col-12">Image 1 link: </form:label>
-						<form:input path="image1" class="form-control"/>
-						<form:errors path="image1" class="text-danger" />
-					</div>
-					<div class="form-group">
-						<form:label path="image2" style="background-color:teal;" class="col-12">Image 2 link: </form:label>
-						<form:input path="image2" class="form-control"/>
-						<form:errors path="image2" class="text-danger" />
-					</div>
-					<div class="form-group">
-						<form:label path="image3" style="background-color:teal;" class="col-12">Image 3 link: </form:label>
-						<form:input path="image3"  class="form-control"/>
-						<form:errors path="image3" css="text-danger" />
-					</div>
-					<div class="form-group">
-						<form:label path="image4" style="background-color:teal;" class="col-12">Image 4 link: </form:label>
-						<form:input path="image4" class="form-control"/>
-						<form:errors path="image4" class="text-danger" />
-					</div>
 					<button style="margin-top: 20px; padding-left: 5px; padding-right: 5px; margin-bottom: 20px;"
 						class="button">Submit</button>
 				</form:form>
@@ -156,11 +136,8 @@
 							<span class="image-preview__default-text">Image Preview</span>
 						</div>
 					</div>
-				    <div style="color:white;">
-					    <div><form:label path="photos2">Photos: </form:label></div>
-					    <div><form:input path="photos2" type="file" id="fileImage2" class="col-12" style="color:white; background-color:teal;" name="image" accept="image/png, image/jpeg" /></div>
-				    	<img id="thumbnail" alt="Image 2 Preview"/>
-				    </div>
+					<button style="margin-top: 20px; padding-left: 5px; padding-right: 5px; margin-bottom: 20px;"
+							class="button">Upload</button>
 				</form:form>
 			</div>
 		</div>

@@ -2,6 +2,8 @@ package com.pamelamawoyo.javaproject.services;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,7 @@ import com.pamelamawoyo.javaproject.repositories.UserRepository;
 
 @Service
 public class UserDetailsServiceImplementation implements UserDetailsService {
+    @Autowired
     private UserRepository userRepository;
     
     public UserDetailsServiceImplementation(UserRepository userRepository){

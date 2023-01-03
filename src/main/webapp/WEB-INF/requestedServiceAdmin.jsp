@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Dashboard</title>
+<title>Scheduled Repairs</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script type="text/javascript" src="/js/app.js"></script>
@@ -15,13 +15,12 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="frame2">
+	<div class="frame8">
 		<div>
-			<div class="container" id="main-container">
-				<nav id="nav2" class="navbar navbar-expand-lg">
+			<nav id="nav2" class="navbar navbar-expand-lg">
 						<div class="container-fluid">
 							<div class="navbar-brand d-flex" style="color: gray;">
-								<div>
+								<div style="margin-left:50px;">
 									<img src="http://localhost:8080/Images/IMG_4244.jpg" alt="Logo"
 										width="110" height="80" class="d-inline-block align-text-top">
 								</div>
@@ -33,7 +32,7 @@
 									<span class="navbar-toggler-icon"></span>
 								</button>
 								<div class="collapse navbar-collapse d-flex" id="navbarNavDropdown">
-									<ul class="navbar-nav" style="margin-right:700px;">
+									<ul class="navbar-nav">
 										<li class="nav-item"><a class="nav-link active"
 											aria-current="page" href="/" style="color: white;">Home</a></li>
 										<li class="nav-item"><a class="nav-link active"
@@ -46,49 +45,112 @@
 											<ul class="dropdown-menu">
 											<li style="color: gray; margin-left:5px; margin-right:5px; "><a style="text-decoration:none; color:black;" href="/view/suv">SUVs</a></li>
 											<li style="color: gray; margin-left:5px; margin-right:5px;"><a style="text-decoration:none; color:black;" href="/view/coupe">Coupes</a></li>
-											<li style="color: gray; margin-left:5px; margin-right:5px;"><a style="text-decoration:none;color:black;" href="/view/luxury">Luxury Saloon Cars</a></li>
+											<li style="color: gray; margin-left:5px; margin-right:5px;"><a style="text-decoration:none; color:black;" href="/view/luxury">Luxury Saloon Cars</a></li>
 											</ul>
 										</li>
 									</ul>
-									<c:if test="${logoutMessage != null}">
-								        <c:out value="${logoutMessage}"></c:out>
-								    </c:if>
-									<form id="logoutForm" method="POST" action="/logout">
-								        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-								        <input type="submit" value="Logout" />
-								    </form>
+									<a href="/dashboard"><button class="button" type="submit" style="margin-left:700px; width:77px;" class="btn btn-primary">Back</button></a>
+									<a href="/logout"><button class="button" type="submit" style="margin-left:20px; width:77px;" class="btn btn-primary">Logout</button></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</nav>
-			</div>
+				<div>
+					<table id="save-table" class="table table-striped" style="background-color:teal;">
+						<thead>
+							<tr>
+								<th>Client First Name</th>
+								<th>Client Last Name</th>
+								<th>Assigned Staff Member</th>
+								<th>Vehicle Make</th>
+								<th>Vehicle Model</th>
+								<th>Mileage</th>
+								<th>Manufacture Year</th>
+								<th>Requested Service Date</th>
+								<th>Service</th>
+								<th>Milestone</th>
+							</tr>
+						</thead>
+						<tbody style="color:white;">
+							<c:forEach var="eachService" items="${repairList}">
+								<tr>
+									<td><c:out value="${eachService.firstName}"></c:out></td>
+									<td><c:out value="${eachService.lastName}"></c:out></td>
+									<td contenteditable><c:out value="${eachService.assigned_staff}"></c:out></td>
+									<td><c:out value="${eachService.make}"></c:out></td>
+									<td><c:out value="${eachService.model}"></c:out></td>
+									<td><c:out value="${eachService.mileage}"></c:out></td>
+									<td><c:out value="${eachService.year}"></c:out></td>
+									<td><c:out value="${eachService.serviceDate}"></c:out></td>
+									<td><c:out value="${eachService.comments}"></c:out></td>
+									<td contenteditable><c:out value="${eachService.mileStone}"></c:out></td>
+									<td>value="${eachService.id}" </td>
+								</tr>
+							</c:forEach>
+						
+						</tbody>
+					</table>
+				</div>
+			<button id="save-button" class="button" type="submit" style="margin-left:20px; width:77px;" class="btn btn-primary">Save</button>
+			<script type="text/javascript">
+				var oTable = document.getElementById('save-table');
+				var rows = oTable.rows
+				for(i=1;i<rows.length;i++) {
+					rows.item(i).cells.item(10).id = rows.item(i).cells.item(10).innerText;
+					rows.item(i).cells.item(10).style = "display:none;";
+				}
+
+				$("#save-button").click ( function () {
+
+			// read the data from the table using loop
+				var oTable = document.getElementById('save-table');
+
+				var rowLength = oTable.rows.length;
+
+				var objs = []
+
+
+				for (i = 1; i < rowLength; i++){
+					var arr = []
+					//gets cells of current row
+					var oCells = oTable.rows.item(i).cells;
+
+					//gets amount of cells of current row
+					var cellLength = oCells.length;
+
+					//loops through each cell in current row
+					var obj = {
+						/* get your cell info here */
+						"id" : oCells.item(10).getAttribute('id'),
+						"assigned_staff" : oCells.item(2).innerHTML,
+						"milestone" : oCells.item(9).innerHTML
+					}
+
+					objs.push(obj);
+				}
+			var jsonData = JSON.stringify({"repairEdits":objs});
+				function success() {
+					alert("Saved Successfully!");
+				}
+
+				$.ajax({
+					type: "POST",
+					url: "/repair/edit",
+					data: jsonData,
+					contentType : 'application/json',
+					success: function(data, textStatus) {
+						success();
+					}
+				});
+
+
+			}); </script>
+
 		</div>
-	    <div style="margin-left:600px; margin-top:100px;" >
-	       <div><a href="/inventory" ><button class="dash">Inventory</button></a></div>
-	       <div><a href="/service/locations" ><button class="dash">Service & Locations</button></a></div>
-	       <div><a href="/financing" ><button class="dash">Financing Options</button></a></div>
-	    </div>
-	   </div>
-		<div class="d-flex" style="background-color: #9f7804; height:500px;">
-			<div class=" frame3 col-6" style="margin-left:100px;">
-				<!--<h1 style="font-size: 50pt;">Don't only dream it, drive it.</h1>-->
-				<div class="d-flex">
-					<div><a href="/inventory"><button style="padding-left: 5px; padding-right: 5px;"
-													class="button2">BRAND NEW</button></a>									
-				</div>
-				</div>
-				
-			</div>
-			<div class=" frame4 col-6" style="margin-right:100px;">
-				<div class="d-flex">
-					<button style="width:200px; padding-left: 5px; padding-right: 5px;"
-														class="button2">PRE-OWNED</button>
-				</div>
-			</div>
-		</div>
-	<!-- Footer -->
-	<footer class="bg-dark text-center text-white">
+	</div>
+</body>
+<footer class="bg-dark text-center text-white">
 		<!-- Grid container -->
 		<div class="container p-4">
 			<!-- Section: Social media -->
@@ -170,7 +232,6 @@
 		</div>
 	</div>
 		<!-- Copyright -->
-	</footer>
-	<!-- Footer -->	
-</body>
+</footer>
+<!-- Footer -->	
 </html>

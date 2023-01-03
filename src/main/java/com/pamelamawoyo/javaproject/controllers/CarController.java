@@ -75,8 +75,16 @@ public class CarController {
 	 if(session.getAttribute("userId")== null) {
 		 return "redirect:/";
 	 }
+		model.addAttribute("repairList", repairService.allRepairs());
+
+	 try {
+		 if (Boolean.valueOf(session.getAttribute("admin").toString())) {
+			 return "requestedServiceAdmin.jsp";
+		 }
+	 } catch (Exception ex) {
+
+	 }
 	 
-	 model.addAttribute("repairList", repairService.allRepairs());
 	 return "requestedService.jsp";
  }
 	
@@ -92,8 +100,9 @@ public class CarController {
 			if(result.hasErrors()) {
 				return "addCar.jsp";
 			}else {
-				carService.createCar(newCar);
-				return "redirect:/dashboard";}
+				Car car = carService.createCar(newCar);
+
+				return String.valueOf(car.getId());}
 			}
 		
 		@GetMapping("/view/luxury")

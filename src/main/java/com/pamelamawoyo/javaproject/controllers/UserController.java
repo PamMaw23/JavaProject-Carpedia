@@ -90,7 +90,11 @@ public class UserController {
 	     // in other words, log them in.
 	     session.setAttribute("userId", loginUser.getId());
 	     session.setAttribute("userName", loginUser.getFirstName());
-	     
+	     if (loginUser.getId() == 1) {
+			 session.setAttribute("admin", true);
+		 } else {
+			 session.setAttribute("admin", false);
+		 }
 	     return "redirect:/dashboard";
 	 }
 	 
@@ -126,6 +130,9 @@ public class UserController {
 	 	public String dashboard(HttpSession session) {
 		 if(session.getAttribute("userId")== null) {
 			 return "redirect:/";
+		 }
+		 if (Boolean.valueOf(session.getAttribute("admin").toString())) {
+			return "dashboard_admin.jsp";
 		 }
 		 return "dashboard.jsp";
 	 }

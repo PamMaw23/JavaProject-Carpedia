@@ -2,6 +2,7 @@ package com.pamelamawoyo.javaproject.services;
 
 import java.util.Optional;
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -16,7 +17,10 @@ public class UserService {
 	
 	
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	@Autowired
     private final UserRepository userRepo;
+	@Autowired
     private final RoleRepository roleRepo;
     
     public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder)     {
